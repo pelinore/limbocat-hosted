@@ -5,7 +5,7 @@ recipes "apt", "build-essential", "chef::client_service", "users::sysadmins",
         "wordpress::add_swap", "vsftpd"
 
 override_attributes(
-  "postfix" => {"myhostname" => "test.limbocat.com", "mydomain" => "limbocat.com"}
+  "postfix" => {"myhostname" => "testblog.limbocat.com", "mydomain" => "limbocat.com"},
   "authorization" => {
     "sudo" => {
       "groups" => [],
