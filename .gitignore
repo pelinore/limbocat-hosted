@@ -1,2 +1,8 @@
 .rake_test_cache
+.chef
+client-config
+*~
+.DS_Store
+.rake_test_cache
+metadata.json
 
