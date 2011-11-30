@@ -1,0 +1,20 @@
+  ServerName
+  ServerAlias
+  DocumentRoot
+
+  >
+    Options FollowSymLinks
+    AllowOverride FileInfo
+    Order allow,deny
+    Allow from all
+
+    Options FollowSymLinks
+    AllowOverride None
+
+  LogLevel info
+  ErrorLog /-error.log
+  CustomLog /-access.log combined
+
+  RewriteEngine On
+  RewriteLog /-rewrite.log
+  RewriteLogLevel 0
