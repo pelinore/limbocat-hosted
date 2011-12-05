@@ -1,6 +1,6 @@
 name "wordpress"
 description "Blog using wordpress"
-recipes "apt", "build-essential", "chef::client_service", "users::sysadmins",
+recipes "apt", "build-essential", "chef-client::service", "users::sysadmins",
         "sudo", "postfix", "mysql::server", "wordpress", "wordpress::blog_user",
         "wordpress::add_swap", "vsftpd"
 
