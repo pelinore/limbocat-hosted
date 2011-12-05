@@ -8,4 +8,4 @@ default[:wordpress][:blog_updater][:hash] = nil
 
 # For creating the swap partition. Swap_size is in GB
 default[:wordpress][:gb_swap_size] = 2
-default[:wordpress][:swap_file] = "/swap_file
+default[:wordpress][:swap_file] = "/swap_file"
