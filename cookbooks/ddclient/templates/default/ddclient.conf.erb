@@ -2,6 +2,9 @@
 #
 # /etc/ddclient.conf
 
+daemon=<%= node[:ddclient][:interval] %>
+pid=/var/run/ddclient.pid
+ssl=yes
 protocol=<%= node[:ddclient][:protocol] %>
 use=<%= node[:ddclient][:use] %>
 server=<%= node[:ddclient][:server] %>
