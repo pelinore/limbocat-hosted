@@ -34,6 +34,11 @@ node.set['wordpress']['keys']['auth'] = secure_password
 node.set['wordpress']['keys']['secure_auth'] = secure_password
 node.set['wordpress']['keys']['logged_in'] = secure_password
 node.set['wordpress']['keys']['nonce'] = secure_password
+node.set['wordpress']['keys']['auth_salt'] = secure_password
+node.set['wordpress']['keys']['secure_auth_salt'] = secure_password
+node.set['wordpress']['keys']['logged_in_salt'] = secure_password
+node.set['wordpress']['keys']['nonce_salt'] = secure_password
+
 
 remote_file "#{Chef::Config[:file_cache_path]}/wordpress-#{node['wordpress']['version']}.tar.gz" do
   checksum node['wordpress']['checksum']
@@ -109,7 +114,12 @@ template "#{node['wordpress']['dir']}/wp-config.php" do
     :auth_key        => node['wordpress']['keys']['auth'],
     :secure_auth_key => node['wordpress']['keys']['secure_auth'],
     :logged_in_key   => node['wordpress']['keys']['logged_in'],
-    :nonce_key       => node['wordpress']['keys']['nonce']
+    :nonce_key       => node['wordpress']['keys']['nonce'],
+    :auth_salt       => node['wordpress']['keys']['auth_salt'],
+    :secure_auth_salt => node['wordpress']['keys']['secure_auth_salt'],
+    :logged_in_salt  => node['wordpress']['keys']['logged_in_salt'],
+    :nounce_salt       => node['wordpress']['keys']['nounce_salt']
+
   )
   notifies :write, "log[Navigate to 'http://#{server_fqdn}/wp-admin/install.php' to complete wordpress installation]"
 end
