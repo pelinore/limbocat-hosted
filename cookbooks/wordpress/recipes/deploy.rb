@@ -11,7 +11,7 @@
 directory "#{node['wordpress']['dir']}/wp-content/custom-php" do
   owner "root"
   group "root"
-  mode "0644"
+  mode "0755"
   action :create
 end
 
