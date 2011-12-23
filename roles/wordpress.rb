@@ -1,7 +1,7 @@
 name "wordpress"
 description "Blog using wordpress"
 recipes "apt", "build-essential", "chef-client::service", "users::sysadmins",
-        "sudo", "postfix", "mysql::server", "wordpress", "wordpress:: deploy",
+        "sudo", "postfix", "mysql::server", "wordpress", "wordpress::deploy",
         "wordpress::blog_user", "wordpress::add_swap", "vsftpd"
 
 override_attributes(
