@@ -108,17 +108,17 @@ template "#{node['wordpress']['dir']}/wp-config.php" do
   group "root"
   mode "0644"
   variables(
-    :database        => node['wordpress']['db']['database'],
-    :user            => node['wordpress']['db']['user'],
-    :password        => node['wordpress']['db']['password'],
-    :auth_key        => node['wordpress']['keys']['auth'],
-    :secure_auth_key => node['wordpress']['keys']['secure_auth'],
-    :logged_in_key   => node['wordpress']['keys']['logged_in'],
-    :nonce_key       => node['wordpress']['keys']['nonce'],
-    :auth_salt       => node['wordpress']['keys']['auth_salt'],
+    :database         => node['wordpress']['db']['database'],
+    :user             => node['wordpress']['db']['user'],
+    :password         => node['wordpress']['db']['password'],
+    :auth_key         => node['wordpress']['keys']['auth'],
+    :secure_auth_key  => node['wordpress']['keys']['secure_auth'],
+    :logged_in_key    => node['wordpress']['keys']['logged_in'],
+    :nonce_key        => node['wordpress']['keys']['nonce'],
+    :auth_salt        => node['wordpress']['keys']['auth_salt'],
     :secure_auth_salt => node['wordpress']['keys']['secure_auth_salt'],
-    :logged_in_salt  => node['wordpress']['keys']['logged_in_salt'],
-    :nounce_salt       => node['wordpress']['keys']['nounce_salt']
+    :logged_in_salt   => node['wordpress']['keys']['logged_in_salt'],
+    :nonce_salt       => node['wordpress']['keys']['nonce_salt']
 
   )
   notifies :write, "log[Navigate to 'http://#{server_fqdn}/wp-admin/install.php' to complete wordpress installation]"

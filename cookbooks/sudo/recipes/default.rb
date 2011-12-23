@@ -23,7 +23,7 @@ end
 
 template "/etc/sudoers" do
   source "sudoers.erb"
-  mode 0440
+  mode 0444
   owner "root"
   group "root"
   variables(
