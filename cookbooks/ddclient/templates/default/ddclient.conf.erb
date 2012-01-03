@@ -8,7 +8,7 @@ ssl=yes
 protocol=<%= node[:ddclient][:protocol] %>
 use=<%= node[:ddclient][:use] %>
 server=<%= node[:ddclient][:server] %>
-login=<%= node[:ddclient][:login] %>
-password='<%= node[:ddclient][:password] %>'
+login=<%= @ddclient_login %>
+password='<%= @ddclient_password %>'
 <%= node[:ddclient][:domain] %>
 

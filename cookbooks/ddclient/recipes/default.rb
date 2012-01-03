@@ -16,6 +16,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # 
+ddclient_creds = Chef::EncryptedDataBagItem.load("secrets","ddclient")
+
 package "ddclient" do
   action :install
 end
@@ -30,6 +32,8 @@ template "/etc/ddclient.conf" do
   owner "root"
   group "root"
   mode "0600"
+  variables(:ddclient_login => ddclient_creds['login'],
+            :ddclient_password => ddclient_creds['password'])
   notifies :restart, "service[ddclient]"
 end
 
