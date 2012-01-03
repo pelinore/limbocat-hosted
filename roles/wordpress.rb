@@ -9,22 +9,20 @@ override_attributes(
   "authorization" => {
     "sudo" => {
       "groups" => [],
-      "users" => ["bcrocker_test", "ubuntu"]
+      "users" => ["bcrocker_test", "ubuntu"],
+      "passwordless" => true
     }
   },
   "wordpress" => {
      "server_aliases" => %w(test.limbocat.com),
      "version" => "3.3",
      "checksum" => "ba32a18d3fe263cbe095d846817173b808a74a497c3eab016149cdf8fcbb3e43",
-     "weblog_title" => "LimbocatBlog",
-     "user_name" => "brettc",
-     "admin_email" => "brettc@limbocat.com",
-     "public_view" => "1",
-     "admin_password" => "Ya0JBvjGRnKc",
      "blog_updater" => {
-       "username" => "blog",
-       "password" => "big-secret"
+       "username" => "blog"
      }
    },
-   "vsftpd" => {"chroot_users" => %w(blog)}
+   "vsftpd" => {
+      "ssl_certs_basename" => %w(test.limbocat.com),
+      "chroot_users" => %w(blog)
+      }
 )

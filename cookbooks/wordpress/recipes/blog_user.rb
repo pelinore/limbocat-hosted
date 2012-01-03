@@ -1,8 +1,10 @@
 # Get the password cryptographic hash for node[:wordpress][:blog_updater][:password
+# Updated pull from encrypted data bag wordpress_deploy
+deploy_creds = Chef::EncryptedDataBagItem.load("secrets","wordpress_deploy")
 package "makepasswd"
 package "libshadow-ruby1.8"
 if node[:wordpress][:blog_updater][:hash].nil? || node[:wordpress][:blog_updater][:hash].empty?
-  cmd = "echo #{node[:wordpress][:blog_updater][:password]} | /usr/bin/makepasswd --clearfrom=- --crypt-md5 |awk '{ print $2 }'"
+  cmd = "echo #{deploy_creds['blog_updater_password']} | /usr/bin/makepasswd --clearfrom=- --crypt-md5 |awk '{ print $2 }'"
   ruby_block "create_blog_updater_pw" do
     block do
       node.set[:wordpress][:blog_updater][:hash] = `#{cmd}`.chomp

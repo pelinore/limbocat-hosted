@@ -7,6 +7,7 @@
 #
 # Copyright 2011, Limbocat LLC
 #
+deploy_creds = Chef::EncryptedDataBagItem.load("secrets","wordpress_deploy")
 
 directory "#{node['wordpress']['dir']}/wp-content/custom-php" do
   owner "root"
@@ -27,10 +28,10 @@ template "#{node['wordpress']['dir']}/wp-content/install.php" do
   group "root"
   mode "0644"
   variables(
-    :weblog_title   => node['wordpress']['weblog_title'],
-    :user_name      => node['wordpress']['user_name'],
-    :admin_email    => node['wordpress']['admin_email'],
-    :public_view    => node['wordpress']['public_view'],
-    :admin_password => node['wordpress']['admin_password']
+    :weblog_title   => deploy_creds['weblog_title'],
+    :user_name      => deploy_creds['user_name'],
+    :admin_email    => deploy_creds['admin_email'],
+    :public_view    => node['wordpress']['deploy']['public_view'],
+    :admin_password => deploy_creds['admin_password']
   )
 end
